@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import data from './restaurants.json'
 import logo from './logo.svg';
 import './App.css';
 
@@ -13,6 +14,15 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+
+          <ul>
+              {
+                  data.map(function(resto){
+                      return <li>{resto.name}</li>;
+                  })
+              }
+          </ul>
+
       </div>
     );
   }
