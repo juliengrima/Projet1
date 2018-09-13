@@ -2,7 +2,9 @@ CREATE TABLE restaurants
 ( 
     id INTEGER PRIMARY KEY AUTO_INCREMENT, 
     name VARCHAR(90), 
-    address VARCHAR(90), 
-    image VARCHAR(90), 
-    note INT 
+    address1 VARCHAR(90),
+    address2 VARCHAR(90),
+    image VARCHAR(90),
+    to_website VARCHAR(90), 
+    note INT,
 );

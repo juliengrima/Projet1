@@ -16,7 +16,7 @@ app.get("/", (req,res) => {
     res.send("youhou");
 });
 
-app.use('/auth', authRouter);
+app.use('/restaurants', restaurantsRouter);
 
 app.use(function(req, res, next) {
     var  err  =  new  Error('Not Found');
