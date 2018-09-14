@@ -1,0 +1,35 @@
+Script started on Fri Sep 14 13:20:23 2018
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                 [0m[27m[24m[JMBP-de-Julien% [K[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                 [0m[27m[24m[JMBP-de-Julien% [K[?2004hlls[?2004l
+app.js			package-lock.json	restaurants.json	script			typescript
+helpers			package.json		routes			sql			yarn.lock
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                 [0m[27m[24m[JMBP-de-Julien% [K[?2004hccd scrit pt[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                 [0m[27m[24m[JMBP-de-Julien% [K[?2004hlls[?2004l
+dbInit.js
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                 [0m[27m[24m[JMBP-de-Julien% [K[?2004hnnode dbInit.js[1m [0m[0m [?2004l
+/Users/juliengrima/Sites/React-Express/projet1/back/script/dbInit.js:22
+        if (error) throw error
+                   ^
+
+Error: ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client
+    at Handshake.Sequence._packetToError (/Users/juliengrima/node_modules/mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Handshake.ErrorPacket (/Users/juliengrima/node_modules/mysql/lib/protocol/sequences/Handshake.js:124:18)
+    at Protocol._parsePacket (/Users/juliengrima/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/Users/juliengrima/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/Users/juliengrima/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/Users/juliengrima/node_modules/mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/Users/juliengrima/node_modules/mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:127:13)
+    at addChunk (_stream_readable.js:269:12)
+    at readableAddChunk (_stream_readable.js:256:11)
+    --------------------
+    at Protocol._enqueue (/Users/juliengrima/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/juliengrima/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at Connection.connect (/Users/juliengrima/node_modules/mysql/lib/Connection.js:118:18)
+    at Connection._implyConnect (/Users/juliengrima/node_modules/mysql/lib/Connection.js:453:10)
+    at Connection.query (/Users/juliengrima/node_modules/mysql/lib/Connection.js:198:8)
+    at jsonArray.map.filter.forEach.element (/Users/juliengrima/Sites/React-Express/projet1/back/script/dbInit.js:21:18)
+    at Array.forEach (<anonymous>)
+    at fs.readFile (/Users/juliengrima/Sites/React-Express/projet1/back/script/dbInit.js:19:6)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:532:3)
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                 [0m[27m[24m[JMBP-de-Julien% [K[?2004h
