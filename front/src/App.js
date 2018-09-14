@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DatatablePage from '../components/DatatablePage'
+import DatatablePage from './components/DatatablePage'
 import ListRestaurant from './components/list-restaurants.component';
 
 // import data from './restaurants.json'
