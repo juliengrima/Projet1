@@ -11,7 +11,6 @@ const DatatablePage = () => {
     const data = require('../restaurants.json')
     const dataStr = JSON.stringify(data);
     const restaurants = JSON.parse(dataStr)
-    // console.log(JSON.parse(dataStr))
 
     const cleanedRestaurants = restaurants
         .map(restaurant => ({
