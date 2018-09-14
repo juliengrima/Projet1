@@ -1,6 +1,6 @@
 CREATE TABLE restaurants 
 ( 
-    id INTEGER PRIMARY KEY AUTO_INCREMENT, 
+    id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT, 
     name VARCHAR(90), 
     address1 VARCHAR(90),
     address2 VARCHAR(90),
