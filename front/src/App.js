@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DatatablePage from '../components/DatatablePage'
 import data from './restaurants.json'
 import logo from './logo.svg';
 import './App.css';
@@ -14,6 +15,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+
+          <DatatablePage/>
 
           <ul>
               {
