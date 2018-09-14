@@ -22,6 +22,7 @@ class App extends Component {
               {
                   data.map(function(resto){
                     return <td>{resto.name}</td>;
+
                   })
               }
           </tr>
