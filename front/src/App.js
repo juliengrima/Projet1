@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DatatablePage from './components/DatatablePage'
 import ListRestaurant from './components/list-restaurants.component';
 
-// import data from './restaurants.json'
+import data from './restaurants.json'
 import logo from './logo.svg';
 import './App.css';
 
@@ -17,14 +17,17 @@ class App extends Component {
 
           <DatatablePage/>
 
-          {/*<ul>*/}
-              {/*{*/}
-                  {/*data.map(function(resto){*/}
-                      {/*return <li>{resto.name}</li>;*/}
-                  {/*})*/}
-              {/*}*/}
-          {/*</ul>*/}
+          <table>
 
+                  <tr>
+                      {
+                      data.map(function(resto){
+                        return <td>{resto.name}</td>;
+                      })
+                      }
+                  </tr>
+
+          </table>
 
         <div>
           <ListRestaurant />

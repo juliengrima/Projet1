@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class ListRestaurant extends Component {
 
-  
   render() {
     return (
      <div>
