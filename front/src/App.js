@@ -17,17 +17,6 @@ class App extends Component {
 
           <DatatablePage/>
 
-          {/*<table>*/}
-          {/*<tr>*/}
-              {/*{*/}
-                  {/*data.map(function(resto){*/}
-                    {/*return <td>{resto.name}</td>;*/}
-
-                  {/*})*/}
-              {/*}*/}
-          {/*</tr>*/}
-          {/*</table>*/}
-
         <div>
           <ListRestaurant />
         </div>

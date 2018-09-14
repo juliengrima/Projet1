@@ -8,40 +8,30 @@ import 'mdbreact/dist/css/mdb.css';
 
 const DatatablePage = () => {
 
-    var fs = require('fs')
-
-    const filename = '../restaurants.json'
-
-    fs.readFile(filename, 'utf8', function(err, data) {
-        if (err) throw err;
-        console.log('OK: ' + filename);
-        //console.log(JSON.parse(data))
-        // console.log(JSON.parse(data).length)
-        const restaurants = JSON.parse(data);
-        const cleanedRestaurants = restaurants
-            .map(restaurant => ({
-
-                name: restaurant.name,
-                address: restaurant.address1,
-                area: restaurant.area ? restaurant.area.name : "",
-                city: restaurant.city,
-                editorial_rating: restaurant.editorial_rating,
-                description: restaurant.description,
-                annotation: restaurant.annotation,
-                owner_annotation: restaurant.owner_annotation,
-                to_website: restaurant.to_website,
-                image_url: restaurant.image_url,
-
-            }))
-            .filter(restaurant => restaurant.name && restaurant.address && restaurant.city && restaurant.editorial_rating && (restaurant.description || restaurant.annotation) && restaurant.image_url)
-            .sort()
-        console.log(cleanedRestaurants)
-    });
-
-    // const data = require('../restaurants.json')
-    // const dataStr = JSON.stringify(data);
-    // const dataToStr = JSON.parse(dataStr)
+    const data = require('../restaurants.json')
+    const dataStr = JSON.stringify(data);
+    const restaurants = JSON.parse(dataStr)
     // console.log(JSON.parse(dataStr))
+
+    const cleanedRestaurants = restaurants
+        .map(restaurant => ({
+
+            name: restaurant.name,
+            address: restaurant.address1,
+            area: restaurant.area ? restaurant.area.name : "",
+            city: restaurant.city,
+            editorial_rating: restaurant.editorial_rating,
+            description: restaurant.description,
+            annotation: restaurant.annotation,
+            owner_annotation: restaurant.owner_annotation,
+            to_website: restaurant.to_website,
+            image_url: restaurant.image_url,
+
+        }))
+        .filter(restaurant => restaurant.name && restaurant.address && restaurant.city && restaurant.editorial_rating && (restaurant.description || restaurant.annotation) && restaurant.image_url)
+        .sort()
+    console.log(cleanedRestaurants)
+
 
     // const data = {
     //     columns: [
