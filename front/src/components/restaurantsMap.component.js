@@ -6,8 +6,8 @@ const RestaurantsMap = withScriptjs(
     const markers = props.restaurants.map((restaurant, index) => (
     <Marker
       key={index}
-      label={restaurant.name}
-      position={{ lat: 48.8534, lng: 2.3488 }}
+      // label={restaurant.name}
+      position={{ lat: restaurant.latitude, lng: restaurant.longitude }}
     />));
 
   return (
