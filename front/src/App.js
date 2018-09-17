@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListRestaurant from './components/list-restaurants.component';
+import RestaurantsMap from './components/restaurantsMap.component';
 // import data from './restaurants.json'
 // import logo from './logo.svg';
 import './App.css';
@@ -50,7 +51,16 @@ class App extends Component {
           }
         </ul> */}
 
-        <ListRestaurant restaurants={this.state.restaurants}/>
+        <ListRestaurant restaurants={this.state.restaurants} />
+        {/* <RestaurantsMap restaurants={this.state.restaurants} /> */}
+
+        <RestaurantsMap
+          restaurants={this.state.restaurants}
+          googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"}
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `600px`, width: `600px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
       </div>
     );
   }
