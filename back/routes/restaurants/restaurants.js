@@ -13,7 +13,7 @@ const connection = require('../../helpers/db');
 // });
 
 router.get('/restaurants', (req, res) => {
-  const sqlQuery = "SELECT * FROM list LIMIT 400"
+  const sqlQuery = "SELECT * FROM list LIMIT 100"
   connection.query(sqlQuery, function (error, results, fields) {
     if (error) throw error
     res.status(200).send(results);
