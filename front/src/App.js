@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import DatatablePage from './components/DatatablePage'
 import ListRestaurant from './components/list-restaurants.component';
 
-import data from './restaurants.json'
 import logo from './logo.svg';
 import './App.css';
 
@@ -15,7 +14,9 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
 
-          <DatatablePage/>
+          <DatatablePage
+              pagination={true}
+          />
 
         <div>
           <ListRestaurant />
