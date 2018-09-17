@@ -24,9 +24,7 @@ class App extends Component {
           }
         </ul> */}
 
-        <div>
-          <ListRestaurant />
-        </div>
+        <ListRestaurant />
       </div>
     );
   }
