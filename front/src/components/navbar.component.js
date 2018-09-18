@@ -47,7 +47,7 @@ class Navbar extends Component {
               <input className="form-control mr-sm-2 input" type="search" placeholder="La place..." aria-label="Search" />
               <button className="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
             </form>
-            <SelectArea />
+            <SelectArea area={this.props.area} />
           </div>
         </nav>
       </div>

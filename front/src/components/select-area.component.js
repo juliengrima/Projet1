@@ -6,8 +6,7 @@ class SelectArea extends Component {
   }
 
   selectArea = event => {
-    // this.props.area(event.target.value)
-    console.log(event.target.value)
+    this.props.area(event.target.value)
   }
 
   render() {

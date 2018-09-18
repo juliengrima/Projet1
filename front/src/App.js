@@ -34,11 +34,15 @@ class App extends Component {
       })
   }
 
+  areaFilter(area) {
+    console.log(area);
+  }
+
   render() {
     return (
       <div className="App">
 
-        <Navbar />
+        <Navbar area={this.areaFilter} />
 
         <ListRestaurant restaurants={this.state.restaurants} />
         
