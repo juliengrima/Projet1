@@ -2,26 +2,8 @@ import React, { Component } from 'react';
 import './../styles/list-restaurants.css';
 class ListRestaurant extends Component {
 
-
-  // componentDidMount() {
-  //   this.getRestaurants();
-  // }
-
-  // getRestaurants = () => {
-  //   const url = "http://localhost:3000/restaurants"
-  //   fetch(url)
-  //     .then(response => {
-  //       return response.json()
-  //     }).then(data => {
-  //       this.setState({
-  //         restaurants: data
-  //       })
-  //       console.log(this.state.restaurants)
-  //     })
-  // }
-
   renderRestaurantsList() {
-    const restaurantsList = this.state.restaurants.map((restaurant, i) =>
+    const restaurantsList = this.props.restaurants.map((restaurant, i) =>
       <div className="mx-auto restaurant mt-2" key={i}>
         <h2 className="mt-4 mb-4">
           {restaurant.name}
