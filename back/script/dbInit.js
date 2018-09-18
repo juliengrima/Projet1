@@ -18,6 +18,14 @@ fs.readFile('../restaurants.json', (err, data) => {
       }
     })
     .filter(element => element.name && element.address1 && element.address2 && element.latitude && element.longitude && element.image && element.to_website && element.note)
+    .sort((a, b) => {
+      if (a.note < b.note) {
+        return 1
+      } if (a.note > b.note) {
+        return -1
+      }
+      return 0
+    })
     .forEach(element => {
       const sqlQuery = "INSERT INTO list (name, address1, address2, latitude, longitude, image, to_website, note) VALUES (?,?,?,?,?,?,?,?)"
       connection.query(sqlQuery, [element.name, element.address1, element.address2, element.latitude, element.longitude, element.image, element.to_website, element.note], function (error, results, fields) {
