@@ -34,8 +34,13 @@ class App extends Component {
       })
   }
 
-  areaFilter(area) {
-    console.log(area);
+  areaFilter = (a) => {
+    const area = a
+    const restaurantFiltered = this.state.restaurants.filter(area => area === this.state.restaurants.address2)
+    this.setState({
+      restaurants: restaurantFiltered
+    })
+    console.log(restaurantFiltered)
   }
 
   render() {
