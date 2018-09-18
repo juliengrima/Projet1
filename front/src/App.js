@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from './components/navbar.component';
 import ListRestaurant from './components/list-restaurants.component';
 import RestaurantsMap from './components/restaurantsMap.component';
 // import data from './restaurants.json'
