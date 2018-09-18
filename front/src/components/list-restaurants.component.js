@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 import './../styles/list-restaurants.css';
 class ListRestaurant extends Component {
 
+  addFavorites = (restaurant) => {
+    return () => {
+      const url = "http://localhost:3000/favorites"
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: restaurant.name,
+          address2: restaurant.address2,
+        })
+      })
+    }
+  }
+
   renderRestaurantsList() {
     const restaurantsList = this.props.restaurants.map((restaurant, i) =>
       <div className="mx-auto restaurant mt-2" key={i}>
@@ -9,6 +26,9 @@ class ListRestaurant extends Component {
           {restaurant.name}
         </h2>
         <img className="image" src={restaurant.image} alt="restaurant" />
+        <button onClick={this.addFavorites(restaurant)}>
+          Ajouter aux favoris
+        </button>
         <h3>{restaurant.address1} {restaurant.address2}</h3>
         <p className="note">{restaurant.note}/5</p>
         <a href={restaurant.to_website} target="_blank">Lien vers le site</a>

@@ -20,4 +20,30 @@ router.get('/restaurants', (req, res) => {
   })
 })
 
+router.post('/favorites', (req, res) => {
+  const sqlQuery = "INSERT INTO favorites (name, address2) VALUES (?,?)"
+  const { name, address2 } = req.body;
+  connection.query(sqlQuery, [name, address2], function (error, results, fields) {
+      if (error) throw error
+      res.status(200).json(results)
+  })
+})
+
+router.get('/favorites-list', (req, res) => {
+  const sqlQuery = "SELECT * FROM favorites"
+  connection.query(sqlQuery, function (error, results, fields) {
+      if (error) throw error
+      res.status(200).send(results)
+  })
+})
+
+
+router.get('/favorite/:id', (req, res) => {
+  const sqlQuery = `SELECT * FROM favorites WHERE id = ${req.params.id}`
+  connection.query(sqlQuery, function (error, results, fields) {
+      if (error) throw error
+      res.status(200).send(results)
+  })
+})
+
 module.exports = router;
