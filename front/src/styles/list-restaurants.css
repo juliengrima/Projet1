@@ -23,6 +23,10 @@
   opacity: 0.9;
 }
 
+.area {
+  background-color: white;
+}
+
 .restaurant {
   border: 1px solid black;
   border-radius: 11px;

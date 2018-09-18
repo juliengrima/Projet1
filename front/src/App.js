@@ -41,7 +41,7 @@ class App extends Component {
         <Navbar />
 
         <ListRestaurant restaurants={this.state.restaurants} />
-
+        
         <RestaurantsMap
           restaurants={this.state.restaurants}
           googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"}

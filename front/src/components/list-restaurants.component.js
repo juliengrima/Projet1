@@ -21,7 +21,7 @@ class ListRestaurant extends Component {
 
   renderRestaurantsList() {
     const restaurantsList = this.props.restaurants.map((restaurant, i) =>
-      <div className="mx-auto restaurant mt-2" key={i}>
+      <div className="col-lg-4 restaurant mt-2" key={i}>
         <h2 className="mt-4 mb-4">
           {restaurant.name}
         </h2>
