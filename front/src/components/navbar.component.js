@@ -35,10 +35,10 @@ class Navbar extends Component {
                 <a className="nav-link" href="#">Nos restaurants</a>
               </li>
               <li className="nav-item active ml-4">
-                <a className="nav-link" href="#">Nos restaurants</a>
+                <a className="nav-link" href="#">Carte des restaurants</a>
               </li>
               <li className="nav-item active ml-4">
-                <a className="nav-link" href="#">Nos restaurants</a>
+                <a className="nav-link" href="#">Mes favoris</a>
               </li>
             </ul>
             <form className="form-inline my-2 my-lg-0 ml-4">
