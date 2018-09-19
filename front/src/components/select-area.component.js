@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '.././styles/select-area.css'
 
 class SelectArea extends Component {
   constructor(props) {

@@ -21,11 +21,13 @@ class ListRestaurant extends Component {
 
   renderRestaurantsList() {
     const restaurantsList = this.props.restaurants.map((restaurant, i) =>
-      <div className="col-lg-4 restaurant mt-2" key={i}>
-        <h2 className="mt-4 mb-4">
-          {restaurant.name}
-        </h2>
-        <img className="image" src={restaurant.image} alt="restaurant" />
+      <div className="card col-lg-4 mt-2" key={i}>
+        <div className="card-header">
+          <h2 className="mt-2 mb-2">
+            {restaurant.name}
+          </h2>
+        </div>
+        <img className="img-fluid" src={restaurant.image} alt="restaurant" />
         <button onClick={this.addFavorites(restaurant)}>
           Ajouter aux favoris
         </button>
@@ -40,16 +42,6 @@ class ListRestaurant extends Component {
   render() {
     return (
       <div>
-        <div className="container-fluid header">
-          <div className="header-brightness"></div>
-          <div className="row h-100">
-            <div className="mx-auto my-auto header-title">
-              <h1 className="mt-2">Vous voulez trouvez un restaurant à Paris ?</h1>
-              <h2 className="mt-2">Rechercher parmis plus de nos 400 restaurants</h2>
-              <button className="btn btn-primary btn-lg mt-2">Voir notre gallerie</button>
-            </div>
-          </div>
-        </div>
         <div className="container">
           <div className="row">
             <div className="mx-auto">
