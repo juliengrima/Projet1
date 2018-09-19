@@ -13,7 +13,8 @@ class App extends Component {
     super(props)
 
     this.state = {
-      restaurants: []
+      restaurants: [],
+      dataFiltered: []
     }
   }
 
@@ -28,19 +29,24 @@ class App extends Component {
         return response.json()
       }).then(data => {
         this.setState({
-          restaurants: data
+          restaurants: data,
+          dataFiltered: data
         })
         console.log(this.state.restaurants)
       })
   }
 
   areaFilter = (a) => {
-    const area = a
-    const restaurantFiltered = this.state.restaurants.filter(area => area === this.state.restaurants.address2)
+    const restaurantFiltered = this.state.restaurants.filter(area => area.address2 === a)
     this.setState({
-      restaurants: restaurantFiltered
+      dataFiltered: restaurantFiltered
     })
-    console.log(restaurantFiltered)
+    const restaurants = this.state.restaurants;
+    if(a === "Tous") {
+      this.setState({
+        dataFiltered: restaurants
+      })
+    }
   }
 
   render() {
@@ -49,7 +55,7 @@ class App extends Component {
 
         <Navbar area={this.areaFilter} />
 
-        <ListRestaurant restaurants={this.state.restaurants} />
+        <ListRestaurant restaurants={this.state.dataFiltered} />
         
         <RestaurantsMap
           restaurants={this.state.restaurants}
