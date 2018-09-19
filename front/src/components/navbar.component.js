@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './../styles/navbar.css';
 import SelectArea from './select-area.component'
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class Navbar extends Component {
 
@@ -25,32 +26,34 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div>
-        <nav className="navbar fixed-top navbar-expand-lg navbar-dark navbar-color" id="nav">
-          <a className="navbar-brand" href="#">Restau Paris</a>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item active ml-4">
-                <a className="nav-link" href="#">Nos restaurants</a>
-              </li>
-              <li className="nav-item active ml-4">
-                <a className="nav-link" href="#">Carte des restaurants</a>
-              </li>
-              <li className="nav-item active ml-4">
-                <a className="nav-link" href="#">Mes favoris</a>
-              </li>
-            </ul>
-            <form className="form-inline my-2 my-lg-0 ml-4">
-              <input className="form-control mr-sm-2 input" type="search" placeholder="La place..." aria-label="Search" />
-              <button className="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
-            </form>
-            <SelectArea area={this.props.area} />
-          </div>
-        </nav>
-      </div>
+      <Router>
+        <div>
+          <nav className="navbar fixed-top navbar-expand-lg navbar-dark navbar-color" id="nav">
+            <a className="navbar-brand" href="#">Restau Paris</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item active ml-4">
+                  <a className="nav-link" href="#">Nos restaurants</a>
+                </li>
+                <li className="nav-item active ml-4">
+                  <Link to="/map" className="nav-link">Carte des restaurants</Link>
+                </li>
+                <li className="nav-item active ml-4">
+                  <a className="nav-link" href="#">Mes favoris</a>
+                </li>
+              </ul>
+              <form className="form-inline my-2 my-lg-0 ml-4">
+                <input className="form-control mr-sm-2 input" type="search" placeholder="La place..." aria-label="Search" />
+                <button className="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
+              </form>
+              <SelectArea area={this.props.area} />
+            </div>
+          </nav>
+        </div>
+      </Router>
     )
   }
 }
