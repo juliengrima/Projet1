@@ -58,7 +58,7 @@ class App extends Component {
         <ListRestaurant restaurants={this.state.dataFiltered} />
         
         <RestaurantsMap
-          restaurants={this.state.restaurants}
+          restaurants={this.state.dataFiltered}
           googleMapURL={"https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `600px`, width: `600px` }} />}
