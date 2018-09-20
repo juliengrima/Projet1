@@ -19,7 +19,8 @@ class App extends Component {
     this.state = {
       restaurants: [],
       dataFiltered: [],
-      users: []
+      users: [],
+      restaurantsFiltered: []
     }
   }
 
@@ -36,7 +37,8 @@ class App extends Component {
       }).then(data => {
         this.setState({
           restaurants: data,
-          dataFiltered: data
+          dataFiltered: data,
+          restaurantsFiltered: data
         })
         console.log(this.state.restaurants)
       })
@@ -69,12 +71,22 @@ class App extends Component {
     }
   }
 
+  lambda = (search) => {
+    const regex = new RegExp(search, 'i')
+    const searchedRestaurants = this.state.dataFiltered.filter(restaurant => restaurant.name.match(regex))
+    console.log(searchedRestaurants);
+    this.setState({
+      dataFiltered: searchedRestaurants
+    })
+    console.log(this.state.dataFiltered);
+  }
+
 
   render() {
     return (
       <div className="App">
 
-        <Navbar area={this.areaFilter} restaurants={this.state.restaurants} />
+        <Navbar area={this.areaFilter} filteredRestaurants={this.lambda} restaurants={this.state.restaurants} />
         <Header />
 
         <Router>
@@ -98,7 +110,7 @@ class App extends Component {
               }}
             />
             {/* <button onClick={this.getUsers}>GET USERS</button> */}
-            <SignUp user={this.state.users}/>
+            <SignUp user={this.state.users} />
             <Login user={this.state.users} />
           </div>
         </Router>

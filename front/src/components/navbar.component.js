@@ -35,9 +35,14 @@ class Navbar extends Component {
     const data = new FormData(event.target)
     const search = data.get('word')
     this.setState({search: search})
-    const regex = new RegExp(search, 'i')
-    const result = this.props.restaurants.filter(restaurant => restaurant.name.match(regex))
-    console.log(result);
+    // const regex = new RegExp(search, 'i')
+    // const result = this.props.restaurants.filter(restaurant => restaurant.name.match(regex))
+    // console.log(result);
+    this.filteredRestaurants(search)
+    }
+
+    filteredRestaurants = result => {
+      this.props.filteredRestaurants(result)
     }
 
 
