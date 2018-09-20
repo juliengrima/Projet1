@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const connection = require('./helpers/db');
 const app = express();
 
+const authRouter = require('./routes/auth/auth');
 const restaurantsRouter = require('./routes/restaurants/restaurants');
 
 app.use(morgan('dev'));
@@ -17,6 +18,8 @@ app.get("/", (req, res) => {
     res.send("youhou");
 });
 
+
+app.use(authRouter);
 app.use(restaurantsRouter);
 
 app.use(function (req, res, next) {

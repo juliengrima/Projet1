@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import '.././styles/select-area.css'
 
 class SelectArea extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   selectArea = event => {
     this.props.area(event.target.value)

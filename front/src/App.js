@@ -4,6 +4,8 @@ import Navbar from './components/navbar.component';
 import Header from './components/header.component';
 import ListRestaurant from './components/list-restaurants.component';
 import RestaurantsMap from './components/restaurantsMap.component';
+import SignUp from './components/signUp.component';
+import Login from './components/Login.component'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // import data from './restaurants.json'
 // import logo from './logo.svg';
@@ -16,12 +18,14 @@ class App extends Component {
 
     this.state = {
       restaurants: [],
-      dataFiltered: []
+      dataFiltered: [],
+      users: []
     }
   }
 
   componentDidMount() {
     this.getRestaurants();
+    this.getUsers();
   }
 
   getRestaurants = () => {
@@ -35,6 +39,20 @@ class App extends Component {
           dataFiltered: data
         })
         console.log(this.state.restaurants)
+      })
+  }
+
+  getUsers = () => {
+    const url = "http://localhost:3000/users/"
+    fetch(url)
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        this.setState({
+          users: data
+        })
+        console.log(this.state.users)
       })
   }
 
@@ -78,9 +96,11 @@ class App extends Component {
                 />
               }}
             />
+            {/* <button onClick={this.getUsers}>GET USERS</button> */}
+            <SignUp user={this.state.users}/>
+            <Login user={this.state.users} />
           </div>
         </Router>
-
       </div>
     );
   }
