@@ -4,6 +4,13 @@ import SelectArea from './select-area.component'
 
 class Navbar extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      search: ''
+    }
+  }
+
   componentDidMount() {
     this.changeNavbarColor();
   }
@@ -22,6 +29,17 @@ class Navbar extends Component {
       }
     });
   }
+
+  searchRestaurant = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.target)
+    const search = data.get('word')
+    this.setState({search: search})
+    const regex = new RegExp(search, 'i')
+    const result = this.props.restaurants.filter(restaurant => restaurant.name.match(regex))
+    console.log(result);
+    }
+
 
   render() {
     return (
@@ -43,8 +61,8 @@ class Navbar extends Component {
                 <a className="nav-link" href="#">Mes favoris</a>
               </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0 ml-4">
-              <input className="form-control mr-sm-2 input" type="search" placeholder="La place..." aria-label="Search" />
+            <form className="form-inline my-2 my-lg-0 ml-4" onSubmit={this.searchRestaurant} >
+              <input className="form-control mr-sm-2 input" type="search" placeholder="La place..." aria-label="Search" name="word" />
               <button className="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
             </form>
             <SelectArea area={this.props.area} />

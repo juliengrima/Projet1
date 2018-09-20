@@ -69,11 +69,12 @@ class App extends Component {
     }
   }
 
+
   render() {
     return (
       <div className="App">
 
-        <Navbar area={this.areaFilter} />
+        <Navbar area={this.areaFilter} restaurants={this.state.restaurants} />
         <Header />
 
         <Router>
