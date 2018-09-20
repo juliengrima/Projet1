@@ -18,9 +18,9 @@ class App extends Component {
 
     this.state = {
       restaurants: [],
-      dataFiltered: [],
+      area: "",
+      search: [],
       users: [],
-      restaurantsFiltered: []
     }
   }
 
@@ -37,10 +37,8 @@ class App extends Component {
       }).then(data => {
         this.setState({
           restaurants: data,
-          dataFiltered: data,
-          restaurantsFiltered: data
         })
-        console.log(this.state.restaurants)
+        console.log('fetch', this.state.restaurants)
       })
   }
 
@@ -54,31 +52,42 @@ class App extends Component {
         this.setState({
           users: data
         })
-        console.log(this.state.users)
+        // console.log(this.state.users)
       })
   }
 
   areaFilter = (a) => {
-    const restaurantFiltered = this.state.restaurants.filter(area => area.address2 === a)
-    this.setState({
-      dataFiltered: restaurantFiltered
-    })
-    const restaurants = this.state.restaurants;
     if (a === "Tous") {
       this.setState({
-        dataFiltered: restaurants
+        area: this.state.restaurants
       })
     }
+    this.setState({
+      area: a
+    })
+    // const restaurantFiltered = this.state.restaurants.filter(area => area.address2 === a)
+    // this.setState({
+    //   dataFiltered: restaurantFiltered
+    // })
+    // const restaurants = this.state.restaurants;
+    // if (a === "Tous") {
+    //   this.setState({
+    //     dataFiltered: restaurants
+    //   })
+    // }
   }
 
   lambda = (search) => {
     const regex = new RegExp(search, 'i')
-    const searchedRestaurants = this.state.dataFiltered.filter(restaurant => restaurant.name.match(regex))
-    console.log(searchedRestaurants);
+    // const searchedRestaurants = this.state.dataFiltered.filter(restaurant => restaurant.name.match(regex))
     this.setState({
-      dataFiltered: searchedRestaurants
+      search: regex
     })
-    console.log(this.state.dataFiltered);
+    // console.log(searchedRestaurants);
+    // this.setState({
+    //   dataFiltered: searchedRestaurants
+    // })
+    // console.log(this.state.dataFiltered);
   }
 
 
@@ -93,7 +102,7 @@ class App extends Component {
           <div>
             <Route exact path="/"
               render={props => {
-                return <ListRestaurant restaurants={this.state.dataFiltered} {...props} />
+                return <ListRestaurant restaurants={this.state.restaurants} area={this.state.area} search={this.state.search} {...props} />
               }}
             />
             <Route

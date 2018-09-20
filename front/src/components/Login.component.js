@@ -43,7 +43,7 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this.state.user)
+        // console.log(this.state.user)
         return (<div>
             <form onSubmit={this.handleSubmit}>
                 <input type="email" name="email" />

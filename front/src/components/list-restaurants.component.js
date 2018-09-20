@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './../styles/list-restaurants.css';
+
 class ListRestaurant extends Component {
 
   addFavorites = (restaurant) => {
@@ -19,8 +20,17 @@ class ListRestaurant extends Component {
     }
   }
 
+  // checkProps = () => {
+  //   console.log(this.props.area);
+  //   console.log(this.props.search);  
+  // }
+
   renderRestaurantsList() {
-    const restaurantsList = this.props.restaurants.map((restaurant, i) =>
+    
+    const restaurantsList = this.props.restaurants
+    .filter(restaurant => restaurant.address2 === this.props.area && restaurant.name.match(this.props.search))
+    
+    .map((restaurant, i) =>
       <div className="card col-lg-4 mt-2" key={i}>
         <div className="card-header">
           <h2 className="mt-2 mb-2">
@@ -36,6 +46,7 @@ class ListRestaurant extends Component {
         <a href={restaurant.to_website} target="_blank">Lien vers le site</a>
       </div>
     )
+    console.log('liste restos', restaurantsList)
     return <div className="row mt-2">{restaurantsList}</div>
   }
 
@@ -46,6 +57,7 @@ class ListRestaurant extends Component {
           <div className="row">
             <div className="mx-auto">
               <h1>Restaurants</h1>
+              {/* <button onClick={this.checkProps}>Test Props</button> */}
               <hr />
             </div>
           </div>
