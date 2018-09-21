@@ -8,6 +8,7 @@ fs.readFile('../restaurants.json', (err, data) => {
     .map(element => {
       return {
         name: element.name,
+        location: element.location,
         address1: element.address1,
         address2: element.address2,
         latitude: element.latitude,
@@ -17,7 +18,7 @@ fs.readFile('../restaurants.json', (err, data) => {
         note: element.editorial_rating
       }
     })
-    .filter(element => element.name && element.address1 && element.address2 && element.latitude && element.longitude && element.image && element.to_website && element.note)
+    .filter(element => element.name && element.location && element.address1 && element.address2 && element.latitude && element.longitude && element.image && element.to_website && element.note)
     .sort((a, b) => {
       if (a.note < b.note) {
         return 1
@@ -27,8 +28,8 @@ fs.readFile('../restaurants.json', (err, data) => {
       return 0
     })
     .forEach(element => {
-      const sqlQuery = "INSERT INTO list (name, address1, address2, latitude, longitude, image, to_website, note) VALUES (?,?,?,?,?,?,?,?)"
-      connection.query(sqlQuery, [element.name, element.address1, element.address2, element.latitude, element.longitude, element.image, element.to_website, element.note], function (error, results, fields) {
+      const sqlQuery = "INSERT INTO list (name, location, address1, address2, latitude, longitude, image, to_website, note) VALUES (?,?,?,?,?,?,?,?,?)"
+      connection.query(sqlQuery, [element.name, element.location, element.address1, element.address2, element.latitude, element.longitude, element.image, element.to_website, element.note], function (error, results, fields) {
         if (error) throw error
         console.log(results);
       })

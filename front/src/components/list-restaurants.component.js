@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import SelectArea from './select-area.component'
 import './../styles/list-restaurants.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class ListRestaurant extends Component {
 
@@ -28,7 +28,6 @@ class ListRestaurant extends Component {
           <h3 className="mt-2 mb-2 flex-grow-1">
             {restaurant.name}
           </h3>
-          {/* <FontAwesomeIcon icon="far fa-heart" /> */}
         </div>
         <img className="card-img" src={restaurant.image} alt="restaurant" />
         {/* <button onClick={this.addFavorites(restaurant)}>
@@ -52,6 +51,7 @@ class ListRestaurant extends Component {
             <div className="mx-auto">
               <h1>Restaurants</h1>
               <hr />
+              <SelectArea area={this.props.area} />
             </div>
           </div>
           {this.renderRestaurantsList()}
