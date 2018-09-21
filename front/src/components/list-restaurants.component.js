@@ -33,9 +33,14 @@ class ListRestaurant extends Component {
         {/* <button onClick={this.addFavorites(restaurant)}>
           Ajouter aux favoris
         </button> */}
-        <p className="note">{restaurant.note}/5</p>
+        <div className="location d-flex mt-2 justify-content-start ml-2">
+          <p>{restaurant.location} ({restaurant.address2})</p>
+        </div>
+        <div className="address d-flex justify-content-start ml-2">
+          <p>{restaurant.address1}</p>
+        </div>
         <div className="card-footer">
-          <p>{restaurant.address1} ({restaurant.address2})</p>
+          <p className="note">{restaurant.note}/5</p>
           <a className="link" href={restaurant.to_website} target="_blank">Lien vers le site</a>
         </div>
       </div>

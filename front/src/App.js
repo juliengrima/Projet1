@@ -57,11 +57,11 @@ class App extends Component {
       <div className="App">
         <Switch>
           <div>
-            <Navbar area={this.areaFilter} />
+            <Navbar />
             <Header />
             <Route exact path="/"
               render={props => {
-                return <ListRestaurant restaurants={this.state.dataFiltered} {...props} />
+                return <ListRestaurant area={this.areaFilter} restaurants={this.state.dataFiltered} {...props} />
               }}
             />
             <Route
