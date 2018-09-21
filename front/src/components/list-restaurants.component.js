@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import SelectArea from './select-area.component'
-import ReactStars from 'react-stars'
 import './../styles/list-restaurants.css';
 
 class ListRestaurant extends Component {
@@ -27,35 +26,63 @@ class ListRestaurant extends Component {
   }
 
   renderRestaurantsList() {
-    const restaurantsList = this.props.restaurants.map((restaurant, i) =>
-      <div className="card col-lg-4 mt-2" key={i}>
-        <div className="card-header d-flex">
-          <h3 className="mt-2 mb-2 flex-grow-1">
-            {restaurant.name}
-          </h3>
-        </div>
-        <img className="card-img" src={restaurant.image} alt="restaurant" />
-        {/* <button onClick={this.addFavorites(restaurant)}>
-          Ajouter aux favoris
-        </button> */}
-        <div className="location d-flex mt-2 justify-content-start ml-2">
-          <p>{restaurant.location} ({restaurant.address2})</p>
-        </div>
-        <div className="address d-flex justify-content-start ml-2">
-          <p>{restaurant.address1}</p>
-        </div>
-        <div className="card-footer">
-          <ReactStars
-            count={restaurant.note}
-          onChange={this.ratingChanged}
-          size={24}
-          color2={'#ffd700'} />
-          <p className="note">{restaurant.note}/5</p>
-          <a className="link" href={restaurant.to_website} target="_blank">Lien vers le site</a>
-        </div>
-      </div>
-    )
-    return <div className="row mt-2">{restaurantsList}</div>
+
+    if (this.props.areaSearch === "Tous") {
+      const restaurantsList = this.props.restaurants
+        .map((restaurant, i) =>
+          <div className="card col-lg-4 mt-2" key={i}>
+            <div className="card-header d-flex">
+              <h3 className="mt-2 mb-2 flex-grow-1">
+                {restaurant.name}
+              </h3>
+            </div>
+            <img className="card-img" src={restaurant.image} alt="restaurant" />
+
+            <div className="location d-flex mt-2 justify-content-start ml-2">
+              <p>{restaurant.location} ({restaurant.address2})</p>
+            </div>
+            <div className="address d-flex justify-content-start ml-2">
+              <p>{restaurant.address1}</p>
+            </div>
+            <div className="card-footer">
+              <button className="btn-primary" onClick={this.addFavorites(restaurant)}>
+                Ajouter aux favoris
+              </button>
+              <p className="note">{restaurant.note}/5</p>
+              <a className="link" href={restaurant.to_website} target="_blank">Lien vers le site</a>
+            </div>
+          </div>
+        )
+      return <div className="row mt-2">{restaurantsList}</div>
+    } else {
+
+      const restaurantsList = this.props.restaurants
+        .filter(restaurant => restaurant.address2 === this.props.areaSearch && restaurant.name.match(this.props.search))
+        .map((restaurant, i) =>
+          <div className="card col-lg-4 mt-2" key={i}>
+            <div className="card-header d-flex">
+              <h3 className="mt-2 mb-2 flex-grow-1">
+                {restaurant.name}
+              </h3>
+            </div>
+            <img className="card-img" src={restaurant.image} alt="restaurant" />
+            <div className="location d-flex mt-2 justify-content-start ml-2">
+              <p>{restaurant.location} ({restaurant.address2})</p>
+            </div>
+            <div className="address d-flex justify-content-start ml-2">
+              <p>{restaurant.address1}</p>
+            </div>
+            <div className="card-footer">
+            <button onClick={this.addFavorites(restaurant)}>
+              Ajouter aux favoris
+            </button>
+              <p className="note">{restaurant.note}/5</p>
+              <a className="link" href={restaurant.to_website} target="_blank">Lien vers le site</a>
+            </div>
+          </div>
+        )
+      return <div className="row mt-2">{restaurantsList}</div>
+    }
   }
 
   render() {
@@ -65,6 +92,7 @@ class ListRestaurant extends Component {
           <div className="row">
             <div className="mx-auto">
               <h1>Restaurants</h1>
+              {/* <button onClick={this.checkProps}>Test Props</button> */}
               <hr />
               <SelectArea area={this.props.area} />
             </div>

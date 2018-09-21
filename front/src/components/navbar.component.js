@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 
 class Navbar extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      search: ''
+    }
+  }
+
   componentDidMount() {
     this.changeNavbarColor();
   }
@@ -23,6 +30,22 @@ class Navbar extends Component {
     });
   }
 
+  searchRestaurant = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.target)
+    const search = data.get('word')
+    this.setState({search: search})
+    // const regex = new RegExp(search, 'i')
+    // const result = this.props.restaurants.filter(restaurant => restaurant.name.match(regex))
+    // console.log(result);
+    this.filteredRestaurants(search)
+    }
+
+    filteredRestaurants = result => {
+      this.props.filteredRestaurants(result)
+    }
+
+
   render() {
     return (
       <div>
@@ -40,11 +63,11 @@ class Navbar extends Component {
                 <Link to="/map" className="nav-link">Carte des restaurants</Link>
               </li>
               <li className="nav-item active ml-4">
-                <a className="nav-link" href="#">Mes favoris</a>
+                <Link to="/favorites" className="nav-link">Mes favoris</Link>
               </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0 ml-4">
-              <input className="form-control mr-sm-2 input" type="search" placeholder="La place..." aria-label="Search" />
+            <form className="form-inline my-2 my-lg-0 ml-4" onSubmit={this.searchRestaurant} >
+              <input className="form-control mr-sm-2 input" type="search" placeholder="La place..." aria-label="Search" name="word" />
               <button className="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
             </form>
           </div>
