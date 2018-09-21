@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SelectArea from './select-area.component'
+import ReactStars from 'react-stars'
 import './../styles/list-restaurants.css';
 
 class ListRestaurant extends Component {
@@ -21,6 +22,10 @@ class ListRestaurant extends Component {
     }
   }
 
+  ratingChanged = (newRating) => {
+    console.log(newRating)
+  }
+
   renderRestaurantsList() {
     const restaurantsList = this.props.restaurants.map((restaurant, i) =>
       <div className="card col-lg-4 mt-2" key={i}>
@@ -40,6 +45,11 @@ class ListRestaurant extends Component {
           <p>{restaurant.address1}</p>
         </div>
         <div className="card-footer">
+          <ReactStars
+            count={restaurant.note}
+          onChange={this.ratingChanged}
+          size={24}
+          color2={'#ffd700'} />
           <p className="note">{restaurant.note}/5</p>
           <a className="link" href={restaurant.to_website} target="_blank">Lien vers le site</a>
         </div>
